@@ -162,3 +162,4 @@ ffe056bacb  Move command/ to internal/command/
 - **Кто автор `synchronizedWriters`:** Martin Atkins  
   (коммит-вводитель `5ac311e2a91e381e2f52234668b49ba670aa0fe5`: *main: synchronize writes to VT100-faker on Windows*)
 ```
+ч
