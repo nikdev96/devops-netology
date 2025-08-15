@@ -1,0 +1,5 @@
+CONTAINER ID   IMAGE                              COMMAND                  CREATED         STATUS                    PORTS                                     NAMES
+7cef28da7a39   nginx:alpine                       "/docker-entrypoint.…"   5 minutes ago   Up 5 minutes              0.0.0.0:8081->80/tcp, [::]:8081->80/tcp   webv
+ff520d79b899   nginx:stable-alpine                "/docker-entrypoint.…"   5 minutes ago   Up 5 minutes              0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   web
+6856781367d1   quay.io/outline/shadowbox:stable   "docker-entrypoint.s…"   3 months ago    Up 10 minutes                                                       shadowbox
+1e29c06c7c43   containrrr/watchtower              "/watchtower --clean…"   12 months ago   Up 10 minutes (healthy)   8080/tcp                                  watchtower
