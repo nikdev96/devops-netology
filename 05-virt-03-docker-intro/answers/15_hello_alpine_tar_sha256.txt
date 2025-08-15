@@ -1,0 +1,1 @@
+4659b519eddf739837f8457a48987786e5a75e0fd5bb4eaead1acd2059d091e2  05-virt-03-docker-intro/answers/hello-alpine.tar

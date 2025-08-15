@@ -1,0 +1,2 @@
+Permissions Size User Date Modified Name
+.rw-------   54M root 15 Aug 10:49   05-virt-03-docker-intro/answers/compose-web-rootfs.tar
