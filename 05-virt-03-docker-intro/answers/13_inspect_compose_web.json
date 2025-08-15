@@ -1,0 +1,310 @@
+[
+    {
+        "Id": "600d737170baad1a5e42911a27da92477b94bff8dfae3f807f1aba2015e83b72",
+        "Created": "2025-08-15T08:42:23.417402446Z",
+        "Path": "/docker-entrypoint.sh",
+        "Args": [
+            "nginx",
+            "-g",
+            "daemon off;"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 1246707,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2025-08-15T08:42:23.658663149Z",
+            "FinishedAt": "0001-01-01T00:00:00Z",
+            "Health": {
+                "Status": "healthy",
+                "FailingStreak": 0,
+                "Log": [
+                    {
+                        "Start": "2025-08-15T10:44:04.21165356+02:00",
+                        "End": "2025-08-15T10:44:04.253477667+02:00",
+                        "ExitCode": 0,
+                        "Output": "<!doctype html><html><body><h1>Hello, Netology!</h1></body></html>\n"
+                    },
+                    {
+                        "Start": "2025-08-15T10:44:14.254489353+02:00",
+                        "End": "2025-08-15T10:44:14.290390042+02:00",
+                        "ExitCode": 0,
+                        "Output": "<!doctype html><html><body><h1>Hello, Netology!</h1></body></html>\n"
+                    },
+                    {
+                        "Start": "2025-08-15T10:44:24.290907305+02:00",
+                        "End": "2025-08-15T10:44:24.333750724+02:00",
+                        "ExitCode": 0,
+                        "Output": "<!doctype html><html><body><h1>Hello, Netology!</h1></body></html>\n"
+                    },
+                    {
+                        "Start": "2025-08-15T10:44:34.335165831+02:00",
+                        "End": "2025-08-15T10:44:34.391254623+02:00",
+                        "ExitCode": 0,
+                        "Output": "<!doctype html><html><body><h1>Hello, Netology!</h1></body></html>\n"
+                    },
+                    {
+                        "Start": "2025-08-15T10:44:44.392105318+02:00",
+                        "End": "2025-08-15T10:44:44.43345183+02:00",
+                        "ExitCode": 0,
+                        "Output": "<!doctype html><html><body><h1>Hello, Netology!</h1></body></html>\n"
+                    }
+                ]
+            }
+        },
+        "Image": "sha256:4a86014ec6994761b7f3118cf47e4b4fd6bac15fc6fa262c4f356386bbc0e9d9",
+        "ResolvConfPath": "/var/lib/docker/containers/600d737170baad1a5e42911a27da92477b94bff8dfae3f807f1aba2015e83b72/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/600d737170baad1a5e42911a27da92477b94bff8dfae3f807f1aba2015e83b72/hostname",
+        "HostsPath": "/var/lib/docker/containers/600d737170baad1a5e42911a27da92477b94bff8dfae3f807f1aba2015e83b72/hosts",
+        "LogPath": "/var/lib/docker/containers/600d737170baad1a5e42911a27da92477b94bff8dfae3f807f1aba2015e83b72/600d737170baad1a5e42911a27da92477b94bff8dfae3f807f1aba2015e83b72-json.log",
+        "Name": "/compose-web-1",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "docker-default",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "/srv/devops-netology/05-virt-03-docker-intro/images/site:/usr/share/nginx/html:ro"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "compose_default",
+            "PortBindings": {
+                "80/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "8082"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "unless-stopped",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "ID": "600d737170baad1a5e42911a27da92477b94bff8dfae3f807f1aba2015e83b72",
+                "LowerDir": "/var/lib/docker/overlay2/42a174fda5d57fbd554e7b6fe08945e059ffa77776f2ff513ff798908b6d1615-init/diff:/var/lib/docker/overlay2/703f9588d5047a677769137df110ddc342042f60dead3dafdc8ceb61edfe58c7/diff:/var/lib/docker/overlay2/65f910a83774e9fb9757c1745faf0ba18ad8cd643dfc9e6305ebb319bb7bba4a/diff:/var/lib/docker/overlay2/198110a29a03df69cf8ff4a40a01c2b649eab3c4d4b02733b2121b33c2132883/diff:/var/lib/docker/overlay2/96217efefca5c5e67fa7725daf30e601098f01689facf432882310452df63b77/diff:/var/lib/docker/overlay2/34a89bb04ea2d3b8e18960fbe4689503697774948282d3e5dcdb5b4f8c98c124/diff:/var/lib/docker/overlay2/bc16e945e9126aa2f6ac518a5a1b603658442752bbf6665c4a1e300198bcbe60/diff:/var/lib/docker/overlay2/6f2924596d49668c90cc93541343795bd551fb926a6fb1c9be1544068c27b709/diff:/var/lib/docker/overlay2/ce5171bf5d1563052ac167b31000d712d849b85307d57b44ea8d66af5da1c033/diff",
+                "MergedDir": "/var/lib/docker/overlay2/42a174fda5d57fbd554e7b6fe08945e059ffa77776f2ff513ff798908b6d1615/merged",
+                "UpperDir": "/var/lib/docker/overlay2/42a174fda5d57fbd554e7b6fe08945e059ffa77776f2ff513ff798908b6d1615/diff",
+                "WorkDir": "/var/lib/docker/overlay2/42a174fda5d57fbd554e7b6fe08945e059ffa77776f2ff513ff798908b6d1615/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/srv/devops-netology/05-virt-03-docker-intro/images/site",
+                "Destination": "/usr/share/nginx/html",
+                "Mode": "ro",
+                "RW": false,
+                "Propagation": "rprivate"
+            }
+        ],
+        "Config": {
+            "Hostname": "600d737170ba",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "ExposedPorts": {
+                "80/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "NGINX_VERSION=1.29.1",
+                "PKG_RELEASE=1",
+                "DYNPKG_RELEASE=1",
+                "NJS_VERSION=0.9.1",
+                "NJS_RELEASE=1"
+            ],
+            "Cmd": [
+                "nginx",
+                "-g",
+                "daemon off;"
+            ],
+            "Healthcheck": {
+                "Test": [
+                    "CMD-SHELL",
+                    "wget -qO- http://127.0.0.1 || exit 1"
+                ],
+                "Interval": 10000000000,
+                "Timeout": 3000000000,
+                "Retries": 3
+            },
+            "Image": "nginx:alpine",
+            "Volumes": null,
+            "WorkingDir": "/",
+            "Entrypoint": [
+                "/docker-entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "com.docker.compose.config-hash": "8ee09d22437730f6456cd9585a5f09fdb39bc17446a56c60dc01a353f5319267",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "",
+                "com.docker.compose.image": "sha256:4a86014ec6994761b7f3118cf47e4b4fd6bac15fc6fa262c4f356386bbc0e9d9",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "compose",
+                "com.docker.compose.project.config_files": "/srv/devops-netology/05-virt-03-docker-intro/compose/compose.yaml",
+                "com.docker.compose.project.working_dir": "/srv/devops-netology/05-virt-03-docker-intro/compose",
+                "com.docker.compose.replace": "web-1",
+                "com.docker.compose.service": "web",
+                "com.docker.compose.version": "2.39.1",
+                "maintainer": "NGINX Docker Maintainers <docker-maint@nginx.com>"
+            },
+            "StopSignal": "SIGQUIT"
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "a1953f6e4571acc8edb646a43ca9fe1cd8a8bce777d95b86d45b09ecb1d5e363",
+            "SandboxKey": "/var/run/docker/netns/a1953f6e4571",
+            "Ports": {
+                "80/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "8082"
+                    },
+                    {
+                        "HostIp": "::",
+                        "HostPort": "8082"
+                    }
+                ]
+            },
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "compose_default": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "compose-web-1",
+                        "web"
+                    ],
+                    "MacAddress": "e2:6a:a1:e3:8c:27",
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "63857dfa2076305e4c8493bf4a5d8e9c45f7e9981d13b907781226762c3329d1",
+                    "EndpointID": "c413d0ba9cc6c46a3aafd7da366693398b980c4ef8a18b2c8bc769c2ba89ef38",
+                    "Gateway": "172.18.0.1",
+                    "IPAddress": "172.18.0.2",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": [
+                        "compose-web-1",
+                        "web",
+                        "600d737170ba"
+                    ]
+                }
+            }
+        }
+    }
+]

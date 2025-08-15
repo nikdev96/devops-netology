@@ -1,0 +1,20 @@
+IMAGE          CREATED        CREATED BY                                      SIZE      COMMENT
+4a86014ec699   40 hours ago   RUN /bin/sh -c set -x     && apkArch="$(cat …   40.1MB    buildkit.dockerfile.v0
+<missing>      40 hours ago   ENV NJS_RELEASE=1                               0B        buildkit.dockerfile.v0
+<missing>      40 hours ago   ENV NJS_VERSION=0.9.1                           0B        buildkit.dockerfile.v0
+<missing>      40 hours ago   CMD ["nginx" "-g" "daemon off;"]                0B        buildkit.dockerfile.v0
+<missing>      40 hours ago   STOPSIGNAL SIGQUIT                              0B        buildkit.dockerfile.v0
+<missing>      40 hours ago   EXPOSE map[80/tcp:{}]                           0B        buildkit.dockerfile.v0
+<missing>      40 hours ago   ENTRYPOINT ["/docker-entrypoint.sh"]            0B        buildkit.dockerfile.v0
+<missing>      40 hours ago   COPY 30-tune-worker-processes.sh /docker-ent…   4.62kB    buildkit.dockerfile.v0
+<missing>      40 hours ago   COPY 20-envsubst-on-templates.sh /docker-ent…   3.02kB    buildkit.dockerfile.v0
+<missing>      40 hours ago   COPY 15-local-resolvers.envsh /docker-entryp…   389B      buildkit.dockerfile.v0
+<missing>      40 hours ago   COPY 10-listen-on-ipv6-by-default.sh /docker…   2.12kB    buildkit.dockerfile.v0
+<missing>      40 hours ago   COPY docker-entrypoint.sh / # buildkit          1.62kB    buildkit.dockerfile.v0
+<missing>      40 hours ago   RUN /bin/sh -c set -x     && addgroup -g 101…   4.13MB    buildkit.dockerfile.v0
+<missing>      40 hours ago   ENV DYNPKG_RELEASE=1                            0B        buildkit.dockerfile.v0
+<missing>      40 hours ago   ENV PKG_RELEASE=1                               0B        buildkit.dockerfile.v0
+<missing>      40 hours ago   ENV NGINX_VERSION=1.29.1                        0B        buildkit.dockerfile.v0
+<missing>      40 hours ago   LABEL maintainer=NGINX Docker Maintainers <d…   0B        buildkit.dockerfile.v0
+<missing>      4 weeks ago    CMD ["/bin/sh"]                                 0B        buildkit.dockerfile.v0
+<missing>      4 weeks ago    ADD alpine-minirootfs-3.22.1-x86_64.tar.gz /…   8.31MB    buildkit.dockerfile.v0
