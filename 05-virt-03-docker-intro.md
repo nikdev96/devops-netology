@@ -1,173 +1,142 @@
+# 05‑virt‑03 — Docker Intro (отчёт по выполнению)
 
+**Стенд:** Ubuntu (root@frequent-range), IP `109.120.157.49`  
+**Репозиторий:** `nikdev96/devops-netology`  
+**Ветка задания:** `05-virt-03-docker-intro`
 
-# 05‑virt‑03‑docker‑intro — отчёт (macOS)
-
-**Хост:** macOS (Docker Desktop)  
-**Цель:** пройти вводные шаги Docker: базовые образы/контейнеры, публикация порта, bind‑mount, свой образ, инспекция слоёв, лимиты ресурсов.
-
----
-
-## 0) Установка и проверка Docker
-```bash
-brew install --cask docker
-open -a Docker
-docker --version
-docker info | head -n 20
-docker run --rm hello-world
-```
+Цель: установить Docker, запустить контейнеры, собрать свой образ, поднять Compose‑стек, выполнить инспекцию и показать export/save.
 
 ---
 
-## 1) Разогрев: образы и контейнеры (Alpine)
-```bash
-docker pull alpine:3.20
-docker images
-docker run --rm -it alpine:3.20 sh
-# внутри контейнера:
-cat /etc/os-release
-exit
-```
+## Этап 1 — Установка и проверка Docker
+Установлены `docker-ce`, `docker-ce-cli`, `containerd.io`, плагины `buildx` и `compose`. Тестовый контейнер `hello-world` успешно отработал.
 
-**Выдержка вывода `/etc/os-release`:**
-```
-NAME="Alpine Linux"
-VERSION_ID=3.20.7
-PRETTY_NAME="Alpine Linux v3.20"
-```
+**Артефакты**
+- `answers/01_docker_version.txt` — версии Docker
+- `answers/02_docker_info.txt` — системная информация Docker
+- `answers/03_hello_world.txt` — вывод тестового контейнера
 
 ---
 
-## 2) Nginx с публикацией порта (web1)
-```bash
-docker run -d --name web1 -p 8080:80 nginx:alpine
-curl -I http://localhost:8080
-docker logs web1 --tail 20
-```
-
-**Выдержка `curl -I`:**
-```
-HTTP/1.1 200 OK
-Server: nginx/1.29.0
-Content-Type: text/html
-```
-
----
-
-## 3) Bind‑mount статического контента (web2)
-Подготовили страницу и смонтировали её в контейнер (только для чтения).
-
-```bash
-mkdir -p ~/docker/nginx/html
-printf '<h1>Hi Netology</h1>\n' > ~/docker/nginx/html/index.html
-
-docker run -d --name web2 -p 8081:80 \
-  -v ~/docker/nginx/html:/usr/share/nginx/html:ro \
-  nginx:alpine
-
-curl http://localhost:8081
-```
-
-**Ожидаемый ответ:**
-```
-<h1>Hi Netology</h1>
-```
-
-> На macOS bind‑mount работает через VM Docker Desktop, поэтому использовать пути внутри `$HOME` — надёжнее.
-
----
-
-## 4) Свой образ на базе Nginx (web3)
-Dockerfile копирует собственный `index.html` в стандартный корневой каталог Nginx.
-
-```Dockerfile
-# Dockerfile
-FROM nginx:alpine
-COPY index.html /usr/share/nginx/html/index.html
-```
-
-Сборка и запуск:
-```bash
-mkdir -p ~/docker/mynginx && cd ~/docker/mynginx
-printf '<h1>Custom image</h1>\n' > index.html
-cat > Dockerfile <<'EOF'
-FROM nginx:alpine
-COPY index.html /usr/share/nginx/html/index.html
-EOF
-
-docker build -t mynginx:v1 .
-docker run -d --name web3 -p 8082:80 mynginx:v1
-curl http://localhost:8082
-```
-
-**Ожидаемый ответ:**
-```
-<h1>Custom image</h1>
-```
-
----
-
-## 5) Инспекция слоёв и метаданных
-```bash
-# История слоёв образа
-docker history mynginx:v1
-
-# Ключевая мета‑информация образа
-docker inspect mynginx:v1 | jq '.[0].Architecture, .[0].Os'
-
-# Конфигурация контейнера web3
-docker inspect web3 | jq '.[0].HostConfig.Memory, .[0].Config.Env'
-```
-
-**Выдержки:**
-```
-# history (верхушка):
-COPY index.html /usr/share/nginx/html/index.html   22B
-...
-# inspect image:
-"arm64"
-"linux"
-# inspect container:
-0
-["PATH=...","NGINX_VERSION=1.29.0","PKG_RELEASE=1", ...]
-```
-
----
-
-## 6) Ограничение ресурсов контейнера (по желанию)
-```bash
-docker run --rm -it --name testlim \
-  --cpus=1 --memory=256m alpine:3.20 sh
-# проверка, затем exit
-```
-
----
-
-## 7) Очистка (по желанию)
-```bash
-docker rm -f web1 web2 web3 2>/dev/null || true
-docker image prune -f
-```
-
----
-
-## Примечания для macOS (Apple Silicon)
-- Бóльшая часть официальных образов уже имеет сборки для `linux/arm64`.  
-- Если нужен строго `amd64`, можно указать платформу при сборке/запуске:
-  ```bash
-  docker buildx build --platform linux/amd64 -t mynginx:v1-amd64 . --load
-  # или
-  docker run --platform linux/amd64 ...
+## Этап 2 — NGINX: порты и bind‑mount
+- Контейнер `web` (образ `nginx:stable-alpine`) — публикуется на `8080→80`.
+- Контейнер `webv` (образ `nginx:alpine`) с bind‑mount каталога сайта:
   ```
+  /srv/devops-netology/05-virt-03-docker-intro/images/site -> /usr/share/nginx/html
+  ```
+  Отдаёт наш `index.html` на порту `8081`.
+
+**Артефакты**
+- `answers/04_nginx_200.txt` — заголовки `200 OK` с `8080`
+- `answers/05_docker_ps.txt` — список контейнеров
+- `answers/06_web_logs.txt` — логи контейнера `web`
+- `answers/07_custom_index.html` — ответ с `8081`
 
 ---
 
-## Краткий чек‑лист выполнения
-- [x] Docker установлен, `hello-world` отработал  
-- [x] Образ `alpine:3.20` подтянут и запущен (проверен `/etc/os-release`)  
-- [x] Контейнер `web1` (nginx) опубликован на `localhost:8080`  
-- [x] Контейнер `web2` с bind‑mount (`8081`) отдаёт локальную страницу  
-- [x] Собран пользовательский образ `mynginx:v1`, `web3` доступен на `8082`  
-- [x] Изучены слои/метаданные (history/inspect)  
-- [x] Протестировано ограничение ресурсов контейнера
+## Этап 3 — Собственный образ
+Dockerfile:
+```dockerfile
+FROM alpine:3.20
+RUN apk add --no-cache bash
+CMD ["bash","-lc","echo Hello from $(cat /etc/alpine-release)"]
+```
+Собран образ `hello-alpine:local`. Запуск выводит: `Hello from 3.20.7`.
+
+**Артефакты**
+- `answers/08_hello_alpine.txt` — вывод контейнера
+- `answers/08_history_hello_alpine.txt` — `docker history`
+- `answers/08_inspect_hello_alpine.json` — `docker image inspect`
 
 ---
+
+## Этап 4 — Docker Compose
+Финальный `compose/compose.yaml`:
+```yaml
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - "8082:80"
+    volumes:
+      - ../images/site:/usr/share/nginx/html:ro
+    healthcheck:
+      test: ["CMD-SHELL","wget -qO- http://127.0.0.1 || exit 1"]
+    interval: 10s
+    timeout: 3s
+    retries: 3
+    restart: unless-stopped
+```
+
+**Артефакты**
+- `answers/09_compose_ps.txt` — `docker compose ps`
+- `answers/10_compose_page.html` — ответ страницы с `8082`
+- `answers/11_compose_logs.txt` — логи сервиса `web`
+
+---
+
+## Этап 5 — Инспекция контейнера из Compose
+- Проброс портов: `0.0.0.0:8082 -> 80/tcp`
+- Bind‑mount:
+  ```
+  /srv/devops-netology/05-virt-03-docker-intro/images/site -> /usr/share/nginx/html
+  ```
+- Сеть: `compose_default`, IP контейнера: `172.18.0.2`
+
+**Артефакты**
+- `answers/12_images.txt` — список образов
+- `answers/13_inspect_compose_web.json` — `docker inspect` контейнера
+- `answers/13a_mounts.txt` — точки монтирования
+- `answers/13b_network_ip.txt` — IP/сеть
+- `answers/14_history_nginx.txt` — история слоёв `nginx:alpine`
+
+---
+
+## Этап 6 — Save/Load образа и Export контейнера
+### Save/Load (image)
+- Файл: `answers/hello-alpine.tar` *(не коммитится; добавлен в .gitignore)*
+- SHA256: `4659b519eddf739837f8457a48987786e5a75e0fd5bb4eaead1acd2059d091e2`
+- Размер: `10M`
+- После `docker load` образ запускается и выводит `Hello from 3.20.7`.
+
+### Export (container rootfs)
+- Файл: `answers/compose-web-rootfs.tar` *(также игнорируется)*
+- SHA256: `468d928da9b257077dae088b2aa2f84797c2ad72ef1fe87d3db1bbdac9f1285a`
+- Размер: `54M`
+
+> **Разница:** `docker save/load` работает с **образами** (слои, теги, манифесты), 
+> а `docker export` — с **файловой системой контейнера** (без истории, ENV, CMD, ENTRYPOINT и т.п.).
+
+**Артефакты**
+- `answers/15_hello_alpine_tar_sha256.txt`
+- `answers/15a_hello_alpine_tar_size.txt`
+- `answers/16_hello_alpine_after_load.txt`
+- `answers/17_export_tar_sha256.txt`
+- `answers/17a_export_tar_size.txt`
+
+---
+
+## Быстрые команды
+```bash
+# Запуск/перезапуск стека
+cd 05-virt-03-docker-intro/compose && docker compose up -d
+
+# Проверка
+curl -I http://127.0.0.1:8082
+docker compose ps
+docker compose logs -n 50
+
+# Остановка
+docker compose down
+```
+
+## Заметки
+- В каталоге задания добавлен `.gitignore`, исключающий крупные артефакты (`*.tar`, `*.tgz`).
+- Все текстовые выводы сохранены в `answers/` и закоммичены в ветку `05-virt-03-docker-intro`.
+
+---
+
+**Commits по этапам:**
+- Этап 4: `b1c684f` → правки compose, далее `b0a8ab4` (.gitignore)
+- Этап 5: `52e35e9`
+- Этап 6: `235c31a`
