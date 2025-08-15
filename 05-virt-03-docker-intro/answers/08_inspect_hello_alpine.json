@@ -1,0 +1,53 @@
+[
+    {
+        "Id": "sha256:f2557f1863daa3d687db1a41ee44d87345cf4d030630e8a48315f3c14021369e",
+        "RepoTags": [
+            "hello-alpine:local"
+        ],
+        "RepoDigests": [],
+        "Parent": "",
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2025-08-15T10:34:08.748812907+02:00",
+        "DockerVersion": "",
+        "Author": "",
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 9825085,
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/83c5b26850a2234945a1a33fdce01a1ea3d293f9e5911cdeb1d277cf73227d8b/diff",
+                "MergedDir": "/var/lib/docker/overlay2/gb6yh7fsus143le1hgfi9gf5o/merged",
+                "UpperDir": "/var/lib/docker/overlay2/gb6yh7fsus143le1hgfi9gf5o/diff",
+                "WorkDir": "/var/lib/docker/overlay2/gb6yh7fsus143le1hgfi9gf5o/work"
+            },
+            "Name": "overlay2"
+        },
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:097100c76c154cc850192d4aad97bbb1438883ab0cf11944673b645f60d683cb",
+                "sha256:811b50dd9b4a56d7fcf3844d874c4efa4d3cdae353297be4875f8f64e184581a"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2025-08-15T10:34:08.833410361+02:00"
+        },
+        "Config": {
+            "ArgsEscaped": true,
+            "Cmd": [
+                "bash",
+                "-lc",
+                "echo Hello from $(cat /etc/alpine-release)"
+            ],
+            "Entrypoint": null,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+            ],
+            "Labels": null,
+            "OnBuild": null,
+            "User": "",
+            "Volumes": null,
+            "WorkingDir": "/"
+        }
+    }
+]

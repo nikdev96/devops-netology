@@ -1,0 +1,5 @@
+IMAGE          CREATED          CREATED BY                                      SIZE      COMMENT
+f2557f1863da   21 seconds ago   CMD ["bash" "-lc" "echo Hello from $(cat /et…   0B        buildkit.dockerfile.v0
+<missing>      21 seconds ago   RUN /bin/sh -c apk add --no-cache bash # bui…   2.03MB    buildkit.dockerfile.v0
+<missing>      4 weeks ago      CMD ["/bin/sh"]                                 0B        buildkit.dockerfile.v0
+<missing>      4 weeks ago      ADD alpine-minirootfs-3.20.7-x86_64.tar.gz /…   7.79MB    buildkit.dockerfile.v0
